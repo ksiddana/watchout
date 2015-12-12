@@ -8,6 +8,7 @@ var numberOfEnemies = 4;
 //var viewBox = "0 0 500 500"
 
 var color = "green";
+var collisions = 0;
 
 
 var svg = d3.select("body").append("svg")
@@ -92,7 +93,8 @@ var detectCollision = function() {
 
     if ((Math.abs(playerPosition[0] - enemyPositionX) < 35 ) && (Math.abs(playerPosition[1] - enemyPositionY) < 35 )) {
 
-     console.log("Collision Detected");
+     collisions++
+     console.log("Collision Detected: ", collisions);
 
     }  
   }
