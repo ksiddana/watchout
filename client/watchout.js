@@ -21,37 +21,41 @@ var rectangle = svg.append("rect")
     .attr("height", 500)
     .attr("fill", color);
 
-// var enemy = svg.append("circle")
-//     .attr("cx", Math.floor(Math.random() * 400))
-//     .attr("cy", Math.floor(Math.random() * 600))
-//     .attr("r", 10)
-//     .attr("fill", "purple");
 
-// var enemy2 = svg.append("circle")
-// .attr("cx", Math.floor(Math.random() * 400))
-// .attr("cy", Math.floor(Math.random() * 600))
-// .attr("r", 10)
-// .attr("fill", "purple");
-
-
+//ENTER
 function placeEnemies(n){
   for (var i = 0; i <= n; i++){
     var enemy = svg.append("circle")
       .attr("cx", Math.floor(Math.random() * 400))
       .attr("cy", Math.floor(Math.random() * 600))
       .attr("r", 10)
-      .attr("fill", "purple");
+      .attr("fill", "purple")
+      .attr("class", "enemy" + i);
   }
 }
 
+var data = [1, 2, 3, 4, 5];
 
-function update() {
+//UPDATE
+function update(data) {
 
-  for (var i = 0; i < numberOfEnemies; i++){
-    d3.select("circle").transition()
-      .duration(duration)
-      .attr("cx", Math.floor(Math.random() * 400))
-      .attr("cy", Math.floor(Math.random() * 400))
+  //var newInterval = Math.floor(Math.random() * 400);  
+
+
+  for (var i = 0; i <= numberOfEnemies; i++){
+
+    d3.select(".enemy" + i)
+        //.attr("class", "enemy" + i)
+        .transition()
+        .duration(duration)
+        .attr("cx", Math.floor(Math.random() * 600))
+        .attr("cy", Math.floor(Math.random() * 600));
+
+
+    // d3.select("data", i).transition()
+    //   .duration(duration)
+    //   .attr("cx", Math.floor(Math.random() * 400))
+    //   .attr("cy", Math.floor(Math.random() * 400))
   }
 
 
@@ -70,6 +74,6 @@ function update() {
 placeEnemies(numberOfEnemies);
 
 setInterval(function(){
-  update()
+  update(data)
 }, 900);
 
