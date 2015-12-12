@@ -3,7 +3,7 @@ var width = 500,
 
 var duration = 750;
 
-var numberOfEnemies = 5;
+var numberOfEnemies = 4;
 
 //var viewBox = "0 0 500 500"
 
@@ -28,11 +28,11 @@ function dragmove(d) {
   var y = d3.event.y;
   d3.event.sourceEvent.preventDefault();
   d3.select(".player").attr("transform", "translate(" + (x-250) + "," + (y-250) + ")");
-  console.log("x",x,"y",y)
+  console.log("x", x,"y", y);
 }
 var drag = d3.behavior.drag().on("drag", dragmove);
 var point = d3.select(".player")
-var p = {x: point[0], y: point[1]};
+var p = { x: point[0], y: point[1] };
 
 //Define collision behavior
 
@@ -55,6 +55,7 @@ var player = svg.append("circle")
 
 
 
+    // console.log(player[0])
 
 //ENTER
 function placeEnemies(n) {
@@ -68,14 +69,12 @@ function placeEnemies(n) {
   }
 }
 
-
-
-
+function placeEnemyPosition() {
+  
+}
 
 //UPDATE
 function update() {
-
-  
 
   for (var i = 0; i <= numberOfEnemies; i++){
 
@@ -84,33 +83,27 @@ function update() {
         .transition()
         .duration(duration)
         .attr("cx", Math.floor(Math.random() * 600))
-        .attr("cy", Math.floor(Math.random() * 600));
-
-
-    // d3.select("data", i).transition()
-    //   .duration(duration)
-    //   .attr("cx", Math.floor(Math.random() * 400))
-    //   .attr("cy", Math.floor(Math.random() * 400))
+        .attr("cy", Math.floor(Math.random() * 600));    
+        
+        // First grab all the enemies cx, and cy positions
+        // Put them in an array
+        // While the values are being overwritten
+          // We want to check if it colides the current position of the Player
+          //
+        console.log(d3.select('.enemy1'));  
+        var eX = d3.select('.enemy1')[0][0].attributes;
+        // var eX = d3.select('.enemy' + i)[0][0];
+        // var eY = d3.select('.enemy' + i)[0][0];
+        
+        
+        console.log("Enemy" + i + " " + eX);
   }
-
-
-
-
-// d3.selectAll("circle").transition()
-//   .duration(duration)
-//   .attr("cx", Math.floor(Math.random() * 400))
-//   .attr("cy", Math.floor(Math.random() * 400))
-
-// }
-
-
-// The initial display.
-//update();
 }
+       
 
 placeEnemies(numberOfEnemies);
 
 setInterval(function(){
   update()
-}, 900);
+}, 1000);
 
