@@ -17,12 +17,11 @@ var svg = d3.select("body").append("svg")
 
 // Select the SVG Element Tag on the HTML Page, and Append a Rectangle to the 
 // Add the Attributes of the Rectange to the Rectangle.
-/*var rectangle = svg.append("rect")
+var rectangle = svg.append("body")
     .attr("x", 10)
     .attr("y", 10)
     .attr("width", 500)
-    .attr("height", 500)
-    .attr("fill", color);*/
+    .attr("height", 500);
 
 // Function for 
 // Define drag beavior for the Mouse and the Player. Dragmove returns the X and Y
