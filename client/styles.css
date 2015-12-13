@@ -34,6 +34,7 @@ line {
   position: absolute;
 }
 
-.backgroundImage {
-  background-image: url(/client/nintendo_game_wallpapers.jpg);
+svg {
+  background-image: url('nintendo_game_wallpapers.jpg');
+  background-size: 100% 100%;
 }

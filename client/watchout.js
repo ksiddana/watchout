@@ -5,23 +5,25 @@ var duration = 750;
 
 var numberOfEnemies = 10;
 var collisions = 0;
+var color = "green";
 
 // Selected the body, append an SVG component to the body. Add the Attributes of width
 // Height to the SVG element.
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
-    .attr("height", height)
-    .attr("class", "backgroundImage");
+    .attr("height", height);
+   
     //.attr("viewBox", viewBox);
 
 // Select the SVG Element Tag on the HTML Page, and Append a Rectangle to the 
 // Add the Attributes of the Rectange to the Rectangle.
-var rectangle = svg.append("body")
+var rectangle = svg.append("svg")
     .attr("x", 10)
     .attr("y", 10)
     .attr("width", 500)
-    .attr("height", 500);
+    .attr("height", 500)
+    .attr("fill", "green");
 
 // Function for 
 // Define drag beavior for the Mouse and the Player. Dragmove returns the X and Y
@@ -42,7 +44,7 @@ var drag = d3.behavior.drag().on("drag", dragmove);
 // We identified the player circle element as a "Class" "Player"
 // Then we also gave it a function called .drag on the player which has to be defined before the player is created and is invoked by moving the player around.
 
-var player = svg.append("circle")
+var player = rectangle.append("circle")
     .attr("cx", 250)
     .attr("cy", 250)
     .attr("r", 15)
