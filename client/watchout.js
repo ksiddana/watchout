@@ -1,13 +1,9 @@
 var width = 500,
     height = 500;
 var score = 0;
-var duration = 500;
+var duration = 750;
 
 var numberOfEnemies = 10;
-
-//var viewBox = "0 0 500 500"
-
-var color = "green";
 var collisions = 0;
 
 // Selected the body, append an SVG component to the body. Add the Attributes of width
@@ -16,17 +12,17 @@ var collisions = 0;
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height)
-    .attr("fill", color);
+    .attr("class", "backgroundImage");
     //.attr("viewBox", viewBox);
 
 // Select the SVG Element Tag on the HTML Page, and Append a Rectangle to the 
 // Add the Attributes of the Rectange to the Rectangle.
-var rectangle = svg.append("rect")
+/*var rectangle = svg.append("rect")
     .attr("x", 10)
     .attr("y", 10)
     .attr("width", 500)
     .attr("height", 500)
-    .attr("fill", color);
+    .attr("fill", color);*/
 
 // Function for 
 // Define drag beavior for the Mouse and the Player. Dragmove returns the X and Y
@@ -82,11 +78,9 @@ var detectEnemies = function() {
     var eY = d3.select(".enemy" + i).attr("cy");
   
     enemyPosition.push([eX, eY]); 
+    
     score+= .5;
-    if (duration > 200){
-        duration -= 1;
-    }
-     d3.select(".current").select("span").text(score);
+    d3.select(".current").select("span").text(score);
 
    }
 
@@ -109,15 +103,11 @@ var detectCollision = function() {
 
       
      collisions++
-     console.log("Collision Detected: ", collisions);
      d3.select(".collisions").select("span").text(collisions);
      score = 0;
      duration = 500;
-     d3.select("rect").attr("fill", "aqua");
-     d3.select("rect").transition().duration(500).attr("fill", "green");
-     console.log("Duration: ", duration);
-
-     
+     d3.select("svg").select(".player").attr("fill", "orange");
+     d3.select("svg").select(".player").transition().duration(500).attr("fill", "white");
     }  
   }
 }
@@ -142,7 +132,6 @@ function placeEnemies(n) {
 }
 
 placeEnemies(numberOfEnemies);
-//UPDATE
 
 // Update runs every 1000ms or every second and is invoked by the setInterval function defined below.
 function update() {
@@ -151,8 +140,7 @@ function update() {
   // They had different positions based on Math.random(), since the time is determined by the computer clock. 
   for (var i = 0; i <= numberOfEnemies; i++){
 
-    d3.select(".enemy" + i)
-        //.attr("class", "enemy" + i)
+      d3.select(".enemy" + i)
         .transition()
         .duration(duration)
         .attr("cx", Math.floor(Math.random() * 500))

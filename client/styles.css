@@ -33,3 +33,7 @@ line {
   border-radius: 10px;
   position: absolute;
 }
+
+.backgroundImage {
+  background-image: url(/client/nintendo_game_wallpapers.jpg);
+}
